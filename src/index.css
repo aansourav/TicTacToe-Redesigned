@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-filter {
+  position: relative;
+  transition: all 2s ease-in-out;
+  overflow: hidden;
+  animation: anim 7s linear infinite;
+  color: aqua;
+  z-index: 2;
+  text-align: center; /* Center text horizontally */
+}
+
+.text-filter::before,
+.text-filter::after {
+  content: "";
+  height: 0.5rem;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.text-filter::before {
+  background: linear-gradient(to right, #1abfe838, #32ff7e); /* Gradient from green to light green */
+  animation: rotate 10s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s infinite;
+  box-shadow: 0 0 20px rgba(26, 191, 232, 0.8); /* Blue shadow */
+}
+
+.text-filter::after {
+  background: linear-gradient(to right, #1ae8bf38, #66e0ff);
+  /*Gradientfromlightgreentocyan*/
+  animation: rotate 10s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+  box-shadow: 0 0 20px rgba(30, 232, 191, 0.8);
+  /* Green shadow */
+  -webkit-animation: rotate 10s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  to {
+    transform: rotate(360deg) skewX(10deg);
+  }
+}
+
+@keyframes anim {
+  0%,
+  100% {
+    font-weight: 300;
+  }
+  20%,
+  80% {
+    letter-spacing: 5px; /* Reduced letter spacing */
+    transform: scale(1.1); /* Slight scale effect */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* White shadow */
+  }
+}
